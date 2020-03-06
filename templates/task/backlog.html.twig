@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Backlog{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <h1>Backlog du projet {{ project.title }}</h1>
+            {% if tasks is not empty %}
+                <div>
+                    <h3>Liste des éléments du backlog</h3>
+                    {% for task in tasks %}
+                        <div>
+                            {{ task.title }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div>
+                    Aucun élément dans le backlog pour le moment
+                </div>
+            {% endif %}
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
