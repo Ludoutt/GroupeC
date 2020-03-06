@@ -9,6 +9,9 @@
         {% block body %}
             <h1>Ajouter un ticket au backlog</h1>
             {{ form(form) }}
+            <div>
+                <a href="{{ path('backlog', {'project': project.id}) }}">Retour au backlog produit</a>
+            </div>
         {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

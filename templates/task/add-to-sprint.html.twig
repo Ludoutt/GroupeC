@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Ajouter un ticket au backlog{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <h1>Ajouter la tâche "{{ task.title }}" à un sprint</h1>
+            {% if sprints is not empty %}
+                <form method="post" action="">
+                    <label for="sprint">Sprint</label>
+                    <select name="sprint" id="sprint">
+                        <option value="">Selectionner un sprint...</option>
+                        {% for sprint in sprints %}
+                            <option {{ task.sprint.id == sprint.id ? 'selected' : '' }} value="{{ sprint.id }}">{{ sprint.title }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Choisir</button>
+                </form>
+            {% else %}
+                <div>
+                    Il n'existe actuellement aucun sprint, <a href="{{ path('sprint_new', {'id' : project.id}) }}">commencez par en créer un !</a>
+                </div>
+            {% endif %}
+            <div>
+                <a href="{{ path('backlog', {'project': project.id}) }}">Retour au backlog produit</a>
+            </div>
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
