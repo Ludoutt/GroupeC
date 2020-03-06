@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+}
+.bandeau_menu {
+    width: 25%;
+    height: 100vh;
+    background-color: #231C41;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.bandeau_menu h2 {
+    margin-left: 7%;
+}
+.bandeau_menu a {
+    color: white;
+    text-decoration: none;
+}
+.bandeau_menu nav ul {
+    padding: 0;
+}
+.bandeau_menu nav ul li {
+    list-style: none;
+    padding: 15px 30px;
+}
+.bandeau_menu nav ul li.active {
+    background: rgb(0,51,231);
+    background: linear-gradient(90deg, rgba(0,51,231,1) 0%, rgba(40,85,242,1) 0%, rgba(126,44,190,1) 100%);
+}
+
+
+#corps {
+    margin-left: 25%;
+}
+#corps h1 {
+    margin-left: 2%;
+}
+.bouton_add_sprint {
+    background-color: white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    padding: 10px 50px;
+    text-decoration: none;
+    color: black;
+    margin: 3% 0 5% 2%;
+    display: block;
+    width: fit-content;
+}
+.table_sprints {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table_sprints tbody {
+    margin-top: 60px;
+}
+.table_sprints tr {
+    height: 60px;
+}
+.table_sprints thead tr td {
+    font-weight: 700;
+}
+.table_sprints tr td:first-child {
+    width: 65%;
+    padding-left: 3%;
+}
+.td_voir a {
+    background-color: black;
+    color: white;
+    border-radius: 100px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: 1px solid black;
+}
+.td_voir a:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+.table_sprints tr td:nth-child(2), .table_sprints tr td:nth-child(3) {
+    text-align: center;
+}
+.table_sprints tbody tr:nth-child(odd) {
+    background-color: lightgray;
+}
+.table_sprints tbody tr:nth-child(even) {
+    background-color: white;
+}
