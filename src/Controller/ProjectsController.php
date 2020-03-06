@@ -2,20 +2,23 @@
 
 namespace App\Controller;
 
+use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProjectsController extends AbstractController
 {
-    /**
+    /*
      * @Route("/projects", name="projects")
-     */
-    public function index()
+
+    public function index(ProjectRepository $projectRepository)
     {
+        $projects = $projectRepository->findAll();
+
         return $this->render('projects/index.html.twig', [
-            'controller_name' => 'ProjectsController',
+            'projects' => $projects
         ]);
-    }
+    }*/
 
     /**
      * @Route("/project/{id}", name="show_project")
