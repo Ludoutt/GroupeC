@@ -5,15 +5,14 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class BacklogsController extends AbstractController
-{
+class BacklogsController extends AbstractController {
+
     /**
      * @Route("/backlogs", name="backlogs")
      */
-    public function index()
-    {
+    public function index() {
         return $this->render('backlogs/index.html.twig', [
-            'controller_name' => 'BacklogsController',
+                    'controller_name' => 'BacklogsController',
         ]);
     }
 
@@ -22,6 +21,15 @@ class BacklogsController extends AbstractController
      * @todo Passer les entity en paramètres
      */
     public function show_backlog() {
-        return $this->render('backlogs/show_backlog.html.twig');
+        $ticketsNotInASprint = $this->getDoctrine()->getRepository(\App\Entity\Task::class)->findBy(array(
+            'sprint' => null
+        ));
+
+        $sprints = [];
+        return $this->render('backlogs/show_backlog.html.twig', [
+                    'ticketsNotInASprint' => $ticketsNotInASprint,
+                    'sprints' => $sprints
+        ]);
     }
+
 }
