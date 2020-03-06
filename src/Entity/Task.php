@@ -58,6 +58,11 @@ class Task
      */
     private $assignee;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="tasks")
+     */
+    private $project;
+
     public function __construct()
     {
         $this->taskComments = new ArrayCollection();
@@ -179,6 +184,18 @@ class Task
     public function setAssignee(?User $assignee): self
     {
         $this->assignee = $assignee;
+
+        return $this;
+    }
+
+    public function getProject(): ?Project
+    {
+        return $this->project;
+    }
+
+    public function setProject(?Project $project): self
+    {
+        $this->project = $project;
 
         return $this;
     }
