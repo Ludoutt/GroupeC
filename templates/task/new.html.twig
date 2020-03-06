@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Ajouter un ticket au backlog{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <h1>Ajouter un ticket au backlog</h1>
+            {{ form(form) }}
+            <div>
+                <a href="{{ path('backlog', {'project': project.id}) }}">Retour au backlog produit</a>
+            </div>
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

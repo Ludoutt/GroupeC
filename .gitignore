@@ -20,3 +20,14 @@
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+<<<<<<< HEAD
+
+composer.json
+
+composer.lock
+
+config/bundles.php
+
+symfony.lock
+=======
+>>>>>>> master
