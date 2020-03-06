@@ -48,19 +48,31 @@ class TaskController extends AbstractController
 
         return $this->render('task/new.html.twig', [
             'form' => $form->createView(),
+            'project' => $project
         ]);
     }
 
     /**
-     * @Route("/{projet}/backlog/add-to-sprint/{task}", name="add-to-sprint")
+     * @Route("/{project}/backlog/add-to-sprint/{task}", name="add-to-sprint")
      */
     public function addTasktoSprint(Project $project, Task $task)
     {
-        $sprints = $this->getDoctrine()->getRepository(Sprint::class)->findBy(['projet' => $project]);
+        $sprints = $this->getDoctrine()->getRepository(Sprint::class)->findBy(['project' => $project]);
+
+        if (!empty($_POST["sprint"])){
+            $sprint = $this->getDoctrine()->getRepository(Sprint::class)->findOneBy(['id' => $_POST['sprint']]);
+            if (!empty($sprint)){
+                $task->setSprint($sprint);
+                $this->getDoctrine()->getManager()->persist($task);
+                $this->getDoctrine()->getManager()->flush();
+            }
+        }
+
         return $this->render('task/add-to-sprint.html.twig',
             [
                 'task' => $task,
-                'sprints'> $sprints
+                'sprints'=> $sprints,
+                'project' =>$project
             ]
         );
     }
