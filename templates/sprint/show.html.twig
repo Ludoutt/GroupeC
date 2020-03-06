@@ -5,30 +5,30 @@
 {% block body %}
     <h1>Sprint</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ sprint.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ sprint.title }}</td>
-            </tr>
-            <tr>
-                <th>Resume</th>
-                <td>{{ sprint.resume }}</td>
-            </tr>
-            <tr>
-                <th>DateStart</th>
-                <td>{{ sprint.dateStart ? sprint.dateStart|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>DateEnd</th>
-                <td>{{ sprint.dateEnd ? sprint.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h3>TODO</h3>
+        <ul>
+        {% for task in sprint.tasks %}
+            {% if task.status == 'todo' %}
+            <li>{{ task.id }} . {{ task.title }}</li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    <h3>DOING</h3>
+        <ul>
+        {% for task in sprint.tasks %}
+            {% if task.status == 'doing' %}
+            <li>{{ task.id }} . {{ task.title }}</li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    <h3>DONE</h3>
+        <ul>
+        {% for task in sprint.tasks %}
+            {% if task.status == 'done' %}
+            <li>{{ task.id }} . {{ task.title }}</li>
+            {% endif %}
+        {% endfor %}
+        </ul>
 
     <a href="{{ path('sprint_index', {'id' : sprint.project.id}) }}">back to list</a>
 
