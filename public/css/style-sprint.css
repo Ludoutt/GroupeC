@@ -1,0 +1,55 @@
+body{
+    margin: 0;
+}
+
+.conteneur{
+    margin: 0;
+    padding: 0;
+}
+
+.conteneur .title-sprint h1{
+    text-align:center;
+}
+
+.conteneur .sprint-content{
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.conteneur .sprint-content .sprint-content-block{
+    background-color: #EEEEEE;
+    border-radius: 2vw;
+    width: 25vw;
+}
+
+.sprint-content-block .title-todo{
+    color: #007A22;
+    background-color: #B0FDB8;
+    padding: 15px 20px;
+    border-radius: 30px;
+    text-align: center;
+    margin: 2vw 5vw;
+    box-shadow: 0px 0px 15px grey;
+}
+
+.sprint-content-block .title-doing{
+    color: #7A5100;
+    background-color: #FDD9B0;
+    padding: 15px 20px;
+    border-radius: 30px;
+    text-align: center;
+    margin: 2vw 5vw;
+    box-shadow: 0px 0px 15px grey;
+}
+
+.sprint-content-block .title-done{
+    color: #7A0000;
+    background-color: #FDB0B0;
+    padding: 15px 20px;
+    border-radius: 30px;
+    text-align: center;
+    margin: 2vw 5vw;
+    box-shadow: 0px 0px 15px grey;
+}

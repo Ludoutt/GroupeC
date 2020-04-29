@@ -3,36 +3,48 @@
 {% block title %}Sprint{% endblock %}
 
 {% block body %}
-    <h1>Sprint</h1>
+    <div class="conteneur">
+        <div class="title-sprint">
+            <h1>Le Sprint</h1>
+        </div>
 
-    <h3>TODO</h3>
-        <ul>
-        {% for task in sprint.tasks %}
-            {% if task.status == 'todo' %}
-            <li>{{ task.id }} . {{ task.title }}</li>
-            {% endif %}
-        {% endfor %}
-        </ul>
-    <h3>DOING</h3>
-        <ul>
-        {% for task in sprint.tasks %}
-            {% if task.status == 'doing' %}
-            <li>{{ task.id }} . {{ task.title }}</li>
-            {% endif %}
-        {% endfor %}
-        </ul>
-    <h3>DONE</h3>
-        <ul>
-        {% for task in sprint.tasks %}
-            {% if task.status == 'done' %}
-            <li>{{ task.id }} . {{ task.title }}</li>
-            {% endif %}
-        {% endfor %}
-        </ul>
+        <div class="sprint-content">
+            <div class="sprint-content-block">
+                <h2 class="title-todo">À FAIRE</h2>
+                    <ul>
+                    {% for task in sprint.tasks %}
+                        {% if task.status == 'todo' %}
+                        <li>{{ task.id }} . {{ task.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+            </div>
 
-    <a href="{{ path('sprint_index', {'id' : sprint.project.id}) }}">back to list</a>
+            <div class="sprint-content-block">
+                <h2 class="title-doing">EN COURS</h2>
+                    <ul>
+                    {% for task in sprint.tasks %}
+                        {% if task.status == 'doing' %}
+                        <li>{{ task.id }} . {{ task.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+            </div>
 
-    <a href="{{ path('sprint_edit', {'id': sprint.id}) }}">edit</a>
+            <div class="sprint-content-block">
+                <h2 class="title-done">TERMINÉS</h2>
+                    <ul>
+                    {% for task in sprint.tasks %}
+                        {% if task.status == 'done' %}
+                        <li>{{ task.id }} . {{ task.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+            </div>
+        </div>
+        <a href="{{ path('sprint_index', {'id' : sprint.project.id}) }}">back to list</a>
+    </div>
+    {# <a href="{{ path('sprint_edit', {'id': sprint.id}) }}">edit</a> #}
 
     {{ include('sprint/_delete_form.html.twig') }}
 {% endblock %}
