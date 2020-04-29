@@ -32,17 +32,21 @@ class TaskController extends AbstractController
     /**
      * @Route("/{project}/backlog/new", name="backlog_new")
      */
-    public function addTask(Request $request, Project $project)
+    public function addTask(Project $project, Request $request)
     {
         $task = new Task();
-        $task->setProject($project);
 
         $form = $this->createForm(TaskFormType::class, $task);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $task->setProject($project);
             $this->getDoctrine()->getManager()->persist($task);
             $this->getDoctrine()->getManager()->flush();
+
+          return $this->redirectToRoute('backlog', [
+            'project' => $project->getId()
+          ]);
         }
 
 
