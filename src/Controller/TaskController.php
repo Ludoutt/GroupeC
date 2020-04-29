@@ -44,9 +44,7 @@ class TaskController extends AbstractController
             $this->getDoctrine()->getManager()->persist($task);
             $this->getDoctrine()->getManager()->flush();
 
-          return $this->redirectToRoute('backlog', [
-            'project' => $project->getId()
-          ]);
+            return $this->redirectToRoute('backlog', ['project' => $project->getId()]);
         }
 
 
