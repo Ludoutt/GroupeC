@@ -1,4 +1,15 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title) }}
+
+        {{ form_label(form.resume) }}
+        {{ form_widget(form.resume) }}
+
+
+        {{ form_label(form.dateStart) }}
+        {{ form_widget(form.dateStart) }}
+
+        {{ form_label(form.dateEnd) }}
+        {{ form_widget(form.dateEnd) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

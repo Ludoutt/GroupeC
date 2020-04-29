@@ -8,7 +8,19 @@
     <body>
         {% block body %}
             <h1>Ajouter un ticket au backlog</h1>
-            {{ form(form) }}
+            {{ form_start(form) }}
+                {{ form_label(form.title) }}
+                {{ form_widget(form.title) }}
+                {{ form_label(form.resume) }}
+                {{ form_widget(form.resume) }}
+                {{ form_label(form.priority) }}
+                {{ form_widget(form.priority) }}
+                {{ form_label(form.status) }}
+                {{ form_widget(form.status) }}
+                {{ form_label(form.tags) }}
+                {{ form_widget(form.tags) }}
+                {{ form_widget(form.ajouter) }}
+            {{ form_end(form) }}
             <div>
                 <a href="{{ path('backlog', {'project': project.id}) }}">Retour au backlog produit</a>
             </div>
