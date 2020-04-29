@@ -8,7 +8,7 @@
     <body>
         {% block body %}
             <h1>Ajouter un ticket au backlog</h1>
-            {{ form(form) }}
+            {{ include('task/_form.html.twig', {'button_label': 'Update'}) }}
             <div>
                 <a href="{{ path('backlog', {'project': project.id}) }}">Retour au backlog produit</a>
             </div>

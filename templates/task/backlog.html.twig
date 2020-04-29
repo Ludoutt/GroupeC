@@ -18,6 +18,7 @@
                             {{ task.title }}
                         </div>
                         <a href="{{ path('add-to-sprint', {'project' : project.id, 'task' : task.id}) }}">Assigner la tache à un sprint</a>
+                        <a href="{{ path('backlog_edit', {'project' : project.id, 'task' : task.id}) }}">Modifier la tache</a>
                     {% endfor %}
                 </div>
             {% else %}

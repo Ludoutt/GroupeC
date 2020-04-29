@@ -46,7 +46,6 @@ class TaskFormType extends AbstractType
               'label' => 'Tag',
               'required' => false
             ])
-            ->add('ajouter', SubmitType::class)
         ;
     }
 
