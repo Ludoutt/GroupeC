@@ -43,6 +43,8 @@ class TaskController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->persist($task);
             $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('backlog', ['project' => $project->getId()]);
         }
 
 
