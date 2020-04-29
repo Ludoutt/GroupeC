@@ -67,6 +67,7 @@ class Task
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="tasks")
+     * @ORM\Column(nullable=true)
      */
     private $project;
 
