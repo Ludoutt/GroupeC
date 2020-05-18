@@ -16,16 +16,28 @@ class SprintType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-              'label' => 'Titre'
+              'label' => 'Titre',
+              'attr' => [
+                'class' => 'input-form'
+              ]
             ])
             ->add('resume', TextareaType::class, [
-              'label' => 'Description'
+              'label' => 'Description',
+              'attr' => [
+                'class' => 'input-form'
+              ]
             ])
             ->add('dateStart', DateType::class, [
-              'label' => 'Date de début'
+              'label' => 'Date de début',
+              'attr' => [
+                'class' => 'input-form'
+              ]
             ])
             ->add('dateEnd', DateType::class, [
-              'label' => 'Date de fin'
+              'label' => 'Date de fin',
+              'attr' => [
+                'class' => 'input-form'
+              ]
             ])
         ;
     }

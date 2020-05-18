@@ -19,10 +19,16 @@ class TaskFormType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-              'label' => 'Titre'
+              'label' => 'Titre',
+              'attr' => [
+                'class' => 'input-form'
+              ]
             ])
             ->add('resume', TextareaType::class, [
-              'label' => 'Résumé'
+              'label' => 'Résumé',
+              'attr' => [
+                'class' => 'input-form'
+              ]
             ])
             ->add('priority', ChoiceType::class, [
               'choices'  => [
@@ -30,7 +36,10 @@ class TaskFormType extends AbstractType
                 'Normal' => 'normal',
                 'Hight' => 'hight',
               ],
-              'label' => 'Priorité'
+              'label' => 'Priorité',
+              'attr' => [
+                'class' => 'input-form'
+              ]
             ])
             ->add('status', ChoiceType::class, [
               'choices'  => [
@@ -44,9 +53,16 @@ class TaskFormType extends AbstractType
               'class' => TaskTag::class,
               'choice_label' => 'label',
               'label' => 'Tag',
-              'required' => false
+              'required' => false,
+              'attr' => [
+                'class' => 'input-form'
+              ]
             ])
-            ->add('ajouter', SubmitType::class)
+            ->add('ajouter', SubmitType::class, [
+              'attr' => [
+                'class' => 'input-form'
+              ]
+            ])
         ;
     }
 
