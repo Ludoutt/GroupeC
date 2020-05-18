@@ -7,9 +7,11 @@ namespace App\Controller;
 use App\Entity\Project;
 use App\Entity\Sprint;
 use App\Entity\Task;
+use App\Form\ProjectType;
 use App\Form\TaskFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TaskController extends AbstractController
@@ -52,6 +54,41 @@ class TaskController extends AbstractController
             'form' => $form->createView(),
             'project' => $project
         ]);
+    }
+
+    /**
+     * @Route("/{project}/edit/{task}", name="backlog_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Project $project, Task $task): Response
+    {
+        $form = $this->createForm(TaskFormType::class, $task);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('backlog', ['project' => $project->getId()]);
+        }
+
+        return $this->render('task/edit.html.twig', [
+            'task' => $task,
+            'form' => $form->createView(),
+            'project' => $project
+        ]);
+    }
+
+    /**
+     * @Route("/{project}/delete/{task}", name="task_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Project $project, Task $task): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$task->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($task);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('backlog', ['project' => $project->getId()]);
     }
 
     /**
