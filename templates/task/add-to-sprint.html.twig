@@ -14,7 +14,7 @@
                     <select name="sprint" id="sprint">
                         <option value="">Selectionner un sprint...</option>
                         {% for sprint in sprints %}
-                            <option {{ task.sprint.id == sprint.id ? 'selected' : '' }} value="{{ sprint.id }}">{{ sprint.title }}</option>
+                            <option {{ task.sprint is not empty and task.sprint.id == sprint.id ? 'selected' : '' }} value="{{ sprint.id }}">{{ sprint.title }}</option>
                         {% endfor %}
                     </select>
                     <button type="submit">Choisir</button>
