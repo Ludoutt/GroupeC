@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Project{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" type="text/css" href="{{asset('css/form.css')}}">{% endblock %}
 
 {% block body %}
+<section class="under-menu"></section>
+<section class="form-page">
     <h1>Create new Project</h1>
 
-    {{ include('project/_form.html.twig') }}
+        {{ include('project/_form.html.twig') }}
 
-    <a href="{{ path('project_index') }}">back to list</a>
+    <a class="back-form" href="{{ path('project_index') }}">Back to list</a>
+</section>
 {% endblock %}
