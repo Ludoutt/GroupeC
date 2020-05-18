@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+$nav-width: 350px;
+section#wrapper {
+	display: flex;
+	nav {
+		position: fixed;
+		height: 100vh;
+		background-color: #231C41;
+		min-width: $nav-width;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		div.projects {
+			position: relative;
+			top: 6vh;
+			a.home {
+				padding-bottom: 40px;
+				font-size: 18px;
+				text-decoration: none;
+				color: #CCC;
+				text-indent: 20px;
+				display: block;
+			}
+			h1 {
+				margin: 0;
+				padding: 15px 0;
+				text-indent: 20px;
+				line-height: 1;
+				background: linear-gradient(90deg, rgba(0,51,231,1) 0%, rgba(40,85,242,1) 22%, rgba(126,44,190,1) 100%);
+				color: white;
+				font-size: 22px;
+			}
+			ul.project-list {
+				max-height: 60vh;
+				overflow-y:auto;
+				&::-webkit-scrollbar {
+  					width: 8px;
+  					border-radius: 10px;
+  					background-color: #9973c9;
+				}
+				&::-webkit-scrollbar-thumb {
+					width: 4px;
+					height: 25px;
+					border-radius: 10px;
+					background-color: #59328b;
+				}
+				li {
+					list-style: none;
+					margin-bottom: 10px;
+					a {
+						font-size: 16px;
+						color: white;
+						line-height: 1.7;
+						text-decoration: none;
+					}
+				}
+			}
+
+		}
+		a.add {
+			border: 1px solid white;
+			padding: 15px 20px;
+			border-radius: 5px;
+			color: white;
+			display: table-cell;
+			text-decoration: none;
+			margin: 0 auto 35px auto;
+			width: 150px;
+			text-align: center;
+		}
+	}
+	div.masonry {
+		display: flex;
+		flex-wrap: wrap;
+		width: calc(100% - 350px);
+		margin-left: 350px;
+		article.project {
+			width: 200px;
+			margin: 20px;
+			img {
+				object-fit: cover;
+				object-position: center;
+				height: 200px;
+				width: 100%;
+				border-radius: 10px;
+			}
+			h2 {
+				color: #222;
+				font-size: 16px;
+			}
+			p {
+				color: #666;
+				font-size: 12px;
+				line-height: 1.5;
+				height: 60px;
+				overflow: hidden;
+				margin-bottom: 20px;
+			}
+			a {
+				color: rgba(0,51,231,1);
+				text-decoration: none;
+				border: 2px solid rgba(0,51,231,1);
+				border-radius: 5px;
+				padding: 5px 10px;
+				font-size: 14px;
+				font-weight: 600;
+			}
+		}
+	}
+}
