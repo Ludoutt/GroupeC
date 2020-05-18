@@ -63,7 +63,7 @@ body {
     font-weight: 700;
 }
 .table_sprints tr td:first-child {
-    width: 65%;
+    width: 60%;
     padding-left: 3%;
 }
 .td_voir a {
