@@ -3,11 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-         <link rel="stylesheet" type="text/css" href="{{asset('css/style-sprint.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/style-sprint.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('maquette/liste_sprints/style.css')}}">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="bandeau_menu">
+                <h2><a href="#">< Home</a></h2>
+                <nav>
+                    <ul>
+                        <li><a href="">Project List</a></li>
+                        <li class="active"><a href="">Sprints List</a></li>
+                    </ul>
+                </nav>
+            </div>
+        {% block body %}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
