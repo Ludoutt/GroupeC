@@ -1,35 +1,62 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Project index{% endblock %}
-
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="/projects_asset/stylesheets/project.css">
+{% endblock %}
 {% block body %}
-    <h1>Liste des projets</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for project in projects %}
-            <tr>
-                <td>{{ project.title }}</td>
-                <td>{{ project.resume }}</td>
-                <td>
-                    <a href="{{ path('backlog', {'project': project.id}) }}">Voir le backlog</a>
-                    <a href="{{ path('project_edit', {'id': project.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Aucun projet</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('project_new') }}">Ajouter un projet</a>
+<section id="wrapper">
+   <nav>
+      <div class="projects">
+         <!--<a class="home" href="{{ path('project_index') }}">< Accueil</a>-->
+         <h1>Liste des projets</h1>
+         <ul class="project-list">
+            {% for project in projects %}
+            <li><a href="{{ path('backlog', {'project': project.id}) }}">{{ project.title }}</a></li>
+            {% endfor %}
+         </ul>
+   <!--
+         <table class="table">
+            <thead>
+               <tr>
+                  <th>Titre</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for project in projects %}
+               <tr>
+                  <td>{{ project.title }}</td>
+                  <td>{{ project.resume }}</td>
+                  <td>
+                     <a href="{{ path('backlog', {'project': project.id}) }}">Voir le backlog</a>
+                     <a href="{{ path('project_edit', {'id': project.id}) }}">Modifier</a>
+                  </td>
+               </tr>
+               {% else %}
+               <tr>
+                  <td colspan="4">Aucun projet</td>
+               </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+      -->
+      </div>
+      <a class="add" href="{{ path('project_new') }}">Ajouter un projet</a>
+   </nav>
+   <div class="masonry">
+      {% for project in projects %}
+      <article class="project">
+         <img src="https://www.go-sens.fr/img/no-image.jpg">
+         <h2>{{ project.title }}</h2>
+         <p>{{ project.resume }}</p>
+         <div>
+            <a href="{{ path('project_edit', {'id': project.id}) }}">Editer</a>
+            <a href="{{ path('backlog', {'project': project.id}) }}">Voir</a>
+         </div>
+      </article>
+      {% endfor %}
+      </div>
+   </div>
+</section>
 {% endblock %}

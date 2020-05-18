@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+/* line 3, ../sass/project.scss */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* line 9, ../sass/project.scss */
+section#wrapper {
+  display: flex;
+}
+/* line 11, ../sass/project.scss */
+section#wrapper nav {
+  position: fixed;
+  height: 100vh;
+  background-color: #231C41;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* line 19, ../sass/project.scss */
+section#wrapper nav div.projects {
+  position: relative;
+  top: 6vh;
+}
+/* line 22, ../sass/project.scss */
+section#wrapper nav div.projects a.home {
+  padding-bottom: 40px;
+  font-size: 18px;
+  text-decoration: none;
+  color: #CCC;
+  text-indent: 20px;
+  display: block;
+}
+/* line 30, ../sass/project.scss */
+section#wrapper nav div.projects h1 {
+  margin: 0;
+  padding: 15px 0;
+  text-indent: 20px;
+  line-height: 1;
+  background: linear-gradient(90deg, #0033e7 0%, #2855f2 22%, #7e2cbe 100%);
+  color: white;
+  font-size: 22px;
+}
+/* line 39, ../sass/project.scss */
+section#wrapper nav div.projects ul.project-list {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+/* line 42, ../sass/project.scss */
+section#wrapper nav div.projects ul.project-list::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 10px;
+  background-color: #9973c9;
+}
+/* line 47, ../sass/project.scss */
+section#wrapper nav div.projects ul.project-list::-webkit-scrollbar-thumb {
+  width: 4px;
+  height: 25px;
+  border-radius: 10px;
+  background-color: #59328b;
+}
+/* line 53, ../sass/project.scss */
+section#wrapper nav div.projects ul.project-list li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+/* line 56, ../sass/project.scss */
+section#wrapper nav div.projects ul.project-list li a {
+  font-size: 16px;
+  color: white;
+  line-height: 1.7;
+  text-decoration: none;
+}
+/* line 66, ../sass/project.scss */
+section#wrapper nav a.add {
+  border: 1px solid white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  color: white;
+  display: table-cell;
+  text-decoration: none;
+  margin: 0 auto 35px auto;
+  width: 150px;
+  text-align: center;
+}
+/* line 78, ../sass/project.scss */
+section#wrapper div.masonry {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 350px);
+  margin-left: 350px;
+}
+/* line 83, ../sass/project.scss */
+section#wrapper div.masonry article.project {
+  width: 200px;
+  margin: 20px;
+}
+/* line 86, ../sass/project.scss */
+section#wrapper div.masonry article.project img {
+  object-fit: cover;
+  object-position: center;
+  height: 200px;
+  width: 100%;
+  border-radius: 10px;
+}
+/* line 93, ../sass/project.scss */
+section#wrapper div.masonry article.project h2 {
+  color: #222;
+  font-size: 16px;
+}
+/* line 97, ../sass/project.scss */
+section#wrapper div.masonry article.project p {
+  color: #666;
+  font-size: 12px;
+  line-height: 1.5;
+  height: 60px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+/* line 105, ../sass/project.scss */
+section#wrapper div.masonry article.project a {
+  color: #0033e7;
+  text-decoration: none;
+  border: 2px solid #0033e7;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
