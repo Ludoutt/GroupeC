@@ -9,13 +9,14 @@ html, body {
 /* line 9, ../sass/project.scss */
 section#wrapper {
   display: flex;
+  width: 100%;
 }
 /* line 11, ../sass/project.scss */
 section#wrapper nav {
   position: fixed;
   height: 100vh;
   background-color: #231C41;
-  min-width: 350px;
+  width: 25%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -95,8 +96,8 @@ section#wrapper nav a.add {
 section#wrapper div.masonry {
   display: flex;
   flex-wrap: wrap;
-  width: calc(100% - 350px);
-  margin-left: 350px;
+  width: 75%;
+  margin-left: 25%;
 }
 /* line 83, ../sass/project.scss */
 section#wrapper div.masonry article.project {
