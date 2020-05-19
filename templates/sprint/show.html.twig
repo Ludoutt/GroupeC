@@ -33,6 +33,13 @@
             <h1>Le Sprint</h1>
         </div>
 
+        <div class="form-add-delete">
+            <a href="{{ path('sprint_index', {'id' : sprint.project.id}) }}" class="back-sprints">Retour aux sprints</a>
+            {{ include('sprint/_delete_form.html.twig') }}
+        </div>
+
+        
+
         <div class="sprint-content">
             <div class="sprint-content-block">
                 <h2 class="title-todo">À FAIRE</h2>
@@ -67,9 +74,9 @@
                     </ul>
             </div>
         </div>
-        <a href="{{ path('sprint_index', {'id' : sprint.project.id}) }}">back to list</a>
+        
     </div>
     {# <a href="{{ path('sprint_edit', {'id': sprint.id}) }}">edit</a> #}
 
-    {{ include('sprint/_delete_form.html.twig') }}
+    
 {% endblock %}
