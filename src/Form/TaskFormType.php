@@ -27,30 +27,41 @@ class TaskFormType extends AbstractType
             ->add('resume', TextareaType::class, [
                 'attr' => [
                     'class' => 'textarea-form',
-                    'placeholder' => 'Résumé'
+                    'placeholder' => 'Resume'
                 ]
             ])
             ->add('priority', ChoiceType::class, [
                 'choices' => [
+                    'Priorité' => 'priorité',
                     'Low' => 'low',
                     'Normal' => 'normal',
                     'Hight' => 'hight',
                 ],
-                'label' => 'Priorité'
+                'label' => 'Priorité',
+                'attr' => [
+                  'class' => 'select-form'
+                ]
             ])
             ->add('status', ChoiceType::class, [
                 'choices' => [
+                    'Statut' => 'statut',
                     'Todo' => 'todo',
                     'Doing' => 'doing',
                     'Done' => 'done',
                 ],
-                'label' => 'Status'
+                'label' => 'Status',
+                'attr' => [
+                  'class' => 'select-form'
+                ]
             ])
             ->add('tags', EntityType::class, [
                 'class' => TaskTag::class,
                 'choice_label' => 'label',
                 'label' => 'Tag',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                  'class' => 'select-form'
+                ]
             ]);
     }
 
