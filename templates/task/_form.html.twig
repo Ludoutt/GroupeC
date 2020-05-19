@@ -7,7 +7,5 @@
     {{ form_widget(form.priority, {'attr':{'placeholder':'Priority'}}) }}
     {{ form_label(form.status) }}
     {{ form_widget(form.status, {'attr':{'placeholder':'Status'}}) }}
-    {{ form_label(form.tags) }}
-    {{ form_widget(form.tags, {'attr':{'placeholder':'Tag'}}) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

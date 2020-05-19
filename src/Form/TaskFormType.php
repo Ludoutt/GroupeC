@@ -53,15 +53,6 @@ class TaskFormType extends AbstractType
                 'attr' => [
                   'class' => 'select-form'
                 ]
-            ])
-            ->add('tags', EntityType::class, [
-                'class' => TaskTag::class,
-                'choice_label' => 'label',
-                'label' => 'Tag',
-                'required' => false,
-                'attr' => [
-                  'class' => 'select-form'
-                ]
             ]);
     }
 
