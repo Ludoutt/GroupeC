@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
         {% block title %}Sprint new{% endblock %}
         {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{asset('css/form.css')}}">
             <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
         {% endblock %}
 
@@ -24,13 +25,16 @@
                     </div>
                     <div>
                         <a class="add" href="{{ path('project_new') }}">Ajouter une Tâche</a>
-                        <a class="add" href="{{ path('project_new') }}">Ajouter un Sprint</a>
+                        <a class="add" href="{{ path( 'sprint_new', {'id' : project.id} ) }}">Ajouter un Sprint</a>
                     </div>
                 </nav>
             </section>
-    <h1>Create new Sprint</h1>
+            <section class="under-menu"></section>
+            <section class="form-page">
+                <h1>Create new Sprint</h1>
 
-    {{ include('sprint/_form.html.twig') }}
+                {{ include('sprint/_form.html.twig') }}
 
-    <a href="{{ path('sprint_index', {'id' : project.id}) }}">back to list</a>
+                <a href="{{ path('sprint_index', {'id' : project.id}) }}">back to list</a>
+            </section>
 {% endblock %}

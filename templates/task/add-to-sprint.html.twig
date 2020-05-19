@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
         {% block title %}Add task to Sprint{% endblock %}
         {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
         {% endblock %}
 
@@ -9,14 +10,15 @@
             <section id="wrapper">
                 <nav>
                     <div class="projects">
-                        <h2><a href="{{ path('project_index') }}"><   Home</a></h2>
+                        <h2><a href="{{ path('project_index') }}">< Home</a></h2>
                         <h1>Liste des projets</h1>
                         <ul class="project-list">
                             {% for proj in projects %}
                                 <li><a href="{{ path('backlog', {'project': proj.id}) }}">{{ proj.title }}</a></li>
                                 {% if proj.id == project.id %}
                                     {% for sprint in proj.sprints %}
-                                        <li><a href="{{ path('sprint_show', {'id' : sprint.id}) }}" class="menu-decale">{{ sprint.title }}</a></li>
+                                        <li><a href="{{ path('sprint_show', {'id' : sprint.id}) }}"
+                                               class="menu-decale">{{ sprint.title }}</a></li>
                                     {% endfor %}
                                 {% endif %}
                             {% endfor %}
@@ -24,29 +26,33 @@
                     </div>
                     <div>
                         <a class="add" href="{{ path('project_new') }}">Ajouter une Tâche</a>
-                        <a class="add" href="{{ path('project_new') }}">Ajouter un Sprint</a>
+                        <a class="add" href="{{ path( 'sprint_new', {'id' : project.id} ) }}">Ajouter un Sprint</a>
                     </div>
                 </nav>
             </section>
-            <h1>Ajouter la tâche "{{ task.title }}" à un sprint</h1>
-            {% if sprints is not empty %}
-                <form method="post" action="">
-                    <label for="sprint">Sprint</label>
-                    <select name="sprint" id="sprint">
-                        <option value="">Selectionner un sprint...</option>
-                        {% for sprint in sprints %}
-                            <option {{ task.sprint is not empty and task.sprint.id == sprint.id ? 'selected' : '' }} value="{{ sprint.id }}">{{ sprint.title }}</option>
-                        {% endfor %}
-                    </select>
-                    <button type="submit">Choisir</button>
-                </form>
-            {% else %}
+            <section class="under-menu"></section>
+            <section class="form-page">
+                <h1>Ajouter la tâche "{{ task.title }}" à un sprint</h1>
+                {% if sprints is not empty %}
+                    <form method="post" action="">
+                        <label for="sprint">Sprint</label>
+                        <select name="sprint" id="sprint">
+                            <option value="">Selectionner un sprint...</option>
+                            {% for sprint in sprints %}
+                                <option {{ task.sprint is not empty and task.sprint.id == sprint.id ? 'selected' : '' }}
+                                        value="{{ sprint.id }}">{{ sprint.title }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit">Choisir</button>
+                    </form>
+                {% else %}
+                    <div>
+                        Il n'existe actuellement aucun sprint, <a href="{{ path('sprint_new', {'id' : project.id}) }}">commencez
+                            par en créer un !</a>
+                    </div>
+                {% endif %}
                 <div>
-                    Il n'existe actuellement aucun sprint, <a href="{{ path('sprint_new', {'id' : project.id}) }}">commencez par en créer un !</a>
+                    <a href="{{ path('backlog', {'project': project.id}) }}">Retour au backlog produit</a>
                 </div>
-            {% endif %}
-            <div>
-                <a href="{{ path('backlog', {'project': project.id}) }}">Retour au backlog produit</a>
-            </div>
+            </section>
         {% endblock %}
-        {% block javascripts %}{% endblock %}

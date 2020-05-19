@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
         {% block title %}Sprints{% endblock %}
         {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{asset('css/form.css')}}">
             <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
         {% endblock %}
 
@@ -23,42 +24,45 @@
                     </div>
                     <div>
                         <a class="add" href="{{ path('project_new') }}">Ajouter une Tâche</a>
-                        <a class="add" href="{{ path('project_new') }}">Ajouter un Sprint</a>
+                        <a class="add" href="{{ path( 'sprint_new', {'id' : project.id} ) }}">Ajouter un Sprint</a>
                     </div>
                 </nav>
             </section>
-    <h1>Sprint index</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Resume</th>
-                <th>DateStart</th>
-                <th>DateEnd</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for sprint in project.sprints %}
-            <tr>
-                <td>{{ sprint.id }}</td>
-                <td>{{ sprint.title }}</td>
-                <td>{{ sprint.resume }}</td>
-                <td>{{ sprint.dateStart ? sprint.dateStart|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ sprint.dateEnd ? sprint.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('sprint_show', {'id': sprint.id}) }}">show</a>
-                    <a href="{{ path('sprint_edit', {'id': sprint.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <section class="under-menu"></section>
+            <section class="form-page">
+                <h1>Sprint index</h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Resume</th>
+                        <th>DateStart</th>
+                        <th>DateEnd</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for sprint in project.sprints %}
+                        <tr>
+                            <td>{{ sprint.id }}</td>
+                            <td>{{ sprint.title }}</td>
+                            <td>{{ sprint.resume }}</td>
+                            <td>{{ sprint.dateStart ? sprint.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ sprint.dateEnd ? sprint.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>
+                                <a href="{{ path('sprint_show', {'id': sprint.id}) }}">show</a>
+                                <a href="{{ path('sprint_edit', {'id': sprint.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-    <a href="{{ path('sprint_new', {'id' : project.id}) }}">Create new</a>
+                <a href="{{ path('sprint_new', {'id' : project.id}) }}">Create new</a>
+            </section>
 {% endblock %}
