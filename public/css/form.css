@@ -62,6 +62,11 @@ body {
     font-size: 15px;
     margin-bottom: 20px;
 }
+.form-page .task-name-contain {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 .form-page a.back-form {
     color: black;
     text-decoration: none;

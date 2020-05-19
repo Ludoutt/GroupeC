@@ -93,7 +93,7 @@ section#wrapper nav a.add {
   padding: 15px 20px;
   border-radius: 5px;
   color: white;
-  display: table-cell;
+  display: block;
   text-decoration: none;
   margin: 0 auto 35px auto;
   width: 150px;

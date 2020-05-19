@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
         {% block title %}Backlog{% endblock %}
         {% block stylesheets %}
-   <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
-{% endblock %}
+            <link rel="stylesheet" type="text/css" href="{{asset('css/form.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
+        {% endblock %}
 
         {% block body %}
 
@@ -28,26 +29,29 @@
                     </div>
                 </nav>
             </section>
-            <h1>Backlog du projet {{ project.title }}</h1>
-            <a href="{{ path('sprint_index', {"id" : project.id})  }}">sprints</a>
-            <a href="{{ path('project_index') }}">Retour à la liste des projets</a>
-            <a href="{{ path('backlog_new', {'project' : project.id}) }}">Ajouter une tâche</a>
-            {% if tasks is not empty %}
-                <div>
-                    <h3>Liste des éléments du backlog</h3>
-                    {% for task in tasks %}
-                        <div>
-                            {{ task.title }}
-                        </div>
-                        <a href="{{ path('add-to-sprint', {'project' : project.id, 'task' : task.id}) }}">Assigner la tache à un sprint</a>
-                        <a href="{{ path('backlog_edit', {'project' : project.id, 'task' : task.id}) }}">Modifier la tache</a>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <div>
-                    Aucun élément dans le backlog pour le moment
-                </div>
-            {% endif %}
+            <section class="under-menu"></section>
+            <section class="form-page">
+                <h1>Backlog du projet {{ project.title }}</h1>
+                <a href="{{ path('sprint_index', {"id" : project.id})  }}" class="back-form">sprints</a>
+                <a href="{{ path('project_index') }}" class="back-form">Retour à la liste des projets</a>
+                <a href="{{ path('backlog_new', {'project' : project.id}) }}" class="back-form">Ajouter une tâche</a>
+                {% if tasks is not empty %}
+                    <div>
+                        <h3 style="text-align: center;">Liste des éléments du backlog</h3>
+                        {% for task in tasks %}
+                            <div class="task-name-contain">
+                                {{ task.title }}
+                            </div>
+                            <a href="{{ path('add-to-sprint', {'project' : project.id, 'task' : task.id}) }}" class="back-form">Assigner la tache à un sprint</a>
+                            <a href="{{ path('backlog_edit', {'project' : project.id, 'task' : task.id}) }}" class="back-form">Modifier la tache</a>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div>
+                        Aucun élément dans le backlog pour le moment
+                    </div>
+                {% endif %}
+            </section>
         {% endblock %}
         {% block javascripts %}{% endblock %}
 
