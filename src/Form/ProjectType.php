@@ -21,7 +21,7 @@ class ProjectType extends AbstractType
             ])
             ->add('resume', TextareaType::class, [
               'attr' => [
-                'class' => 'input-form'
+                'class' => 'textarea-form'
               ]
             ])
         ;
