@@ -24,8 +24,8 @@
                         </ul>
                     </div>
                     <div>
-                        <a class="add" href="{{ path('project_new') }}">Ajouter une Tâche</a>
-                        <a class="add" href="{{ path('project_new') }}">Ajouter un Sprint</a>
+                        <a class="add" href="{{ path( 'backlog_new', {'project' : project.id} ) }}">Ajouter une Tâche</a>
+                        <a class="add" href="{{ path( 'sprint_new', {'id' : project.id} ) }}">Ajouter un Sprint</a>
                     </div>
                 </nav>
             </section>
@@ -47,7 +47,7 @@
                         {% endfor %}
                     </div>
                 {% else %}
-                    <div>
+                    <div style="margin-top: 20px;">
                         Aucun élément dans le backlog pour le moment
                     </div>
                 {% endif %}
