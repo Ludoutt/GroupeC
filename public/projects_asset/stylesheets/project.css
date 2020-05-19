@@ -34,6 +34,14 @@ section#wrapper nav div.projects a.home {
   text-indent: 20px;
   display: block;
 }
+section#wrapper nav div.projects h2 {
+  margin-left: 20px;
+}
+section#wrapper nav div.projects h2 a {
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+}
 /* line 30, ../sass/project.scss */
 section#wrapper nav div.projects h1 {
   margin: 0;
