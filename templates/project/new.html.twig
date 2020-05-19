@@ -1,10 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Project{% endblock %}
-{% block stylesheets %}<link rel="stylesheet" type="text/css" href="{{asset('css/form.css')}}">{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/form.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
+{% endblock %}
 
 {% block body %}
-<section class="under-menu"></section>
+<section id="wrapper">
+    <nav>
+        <div class="projects">
+            <h2><a href="{{ path('project_index') }}"><   Home</a></h2>
+            <h1>Liste des projets</h1>
+            <ul class="project-list">
+                {% for project in projects %}
+                    <li><a href="{{ path('backlog', {'project': project.id}) }}">{{ project.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+</section>
 <section class="form-page">
     <h1>Create new Project</h1>
 

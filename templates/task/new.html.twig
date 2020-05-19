@@ -1,12 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Ajouter un ticket au backlog{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
+{% extends 'base.html.twig' %}
+        {% block title %}New Ticket Backlog{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
+        {% endblock %}
+
         {% block body %}
+
+<section id="wrapper">
+    <nav>
+        <div class="projects">
+            <h2><a href="{{ path('project_index') }}"><   Home</a></h2>
+            <h1>Liste des projets</h1>
+            <ul class="project-list">
+                {% for project in projects %}
+                    <li><a href="{{ path('backlog', {'project': project.id}) }}">{{ project.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+</section>
             <h1>Ajouter un ticket au backlog</h1>
             {{ include('task/_form.html.twig', {'button_label': 'Update'}) }}
             <div>
@@ -14,5 +26,3 @@
             </div>
         {% endblock %}
         {% block javascripts %}{% endblock %}
-    </body>
-</html>

@@ -74,6 +74,11 @@ section#wrapper nav div.projects ul.project-list li a {
   line-height: 1.7;
   text-decoration: none;
 }
+
+/* line 56, ../sass/project.scss */
+section#wrapper nav div.projects ul.project-list li a.menu-decale {
+  margin-left : 25px;
+}
 /* line 66, ../sass/project.scss */
 section#wrapper nav a.add {
   border: 1px solid white;
@@ -130,3 +135,4 @@ section#wrapper div.masonry article.project a {
   font-size: 14px;
   font-weight: 600;
 }
+

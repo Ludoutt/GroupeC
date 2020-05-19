@@ -9,6 +9,7 @@ use App\Entity\Sprint;
 use App\Entity\Task;
 use App\Form\ProjectType;
 use App\Form\TaskFormType;
+use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,14 +20,15 @@ class TaskController extends AbstractController
     /**
      * @Route("/{project}/backlog", name="backlog")
      */
-    public function allTasks(Project $project)
+    public function allTasks(Project $project, ProjectRepository $projectRepository)
     {
         $tasks = $this->getDoctrine()->getRepository(Task::class)->findBy(['project' => $project->getId()]);
 
         return $this->render('task/backlog.html.twig',
             [
                 'tasks' => $tasks,
-                'project' => $project
+                'project' => $project,
+                'projects' => $projectRepository->findAll()
             ]
         );
     }
@@ -34,7 +36,7 @@ class TaskController extends AbstractController
     /**
      * @Route("/{project}/backlog/new", name="backlog_new")
      */
-    public function addTask(Project $project, Request $request)
+    public function addTask(Project $project, Request $request, ProjectRepository $projectRepository)
     {
         $task = new Task();
 
@@ -52,6 +54,7 @@ class TaskController extends AbstractController
 
         return $this->render('task/new.html.twig', [
             'form' => $form->createView(),
+            'projects' => $projectRepository->findAll(),
             'project' => $project
         ]);
     }
@@ -59,7 +62,7 @@ class TaskController extends AbstractController
     /**
      * @Route("/{project}/edit/{task}", name="backlog_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Project $project, Task $task): Response
+    public function edit(Request $request, Project $project, Task $task, ProjectRepository $projectRepository): Response
     {
         $form = $this->createForm(TaskFormType::class, $task);
         $form->handleRequest($request);
@@ -73,7 +76,8 @@ class TaskController extends AbstractController
         return $this->render('task/edit.html.twig', [
             'task' => $task,
             'form' => $form->createView(),
-            'project' => $project
+            'project' => $project,
+          'projects' => $projectRepository->findAll()
         ]);
     }
 
@@ -94,7 +98,7 @@ class TaskController extends AbstractController
     /**
      * @Route("/{project}/backlog/add-to-sprint/{task}", name="add-to-sprint")
      */
-    public function addTasktoSprint(Project $project, Task $task)
+    public function addTasktoSprint(Project $project, Task $task, ProjectRepository $projectRepository)
     {
         $sprints = $this->getDoctrine()->getRepository(Sprint::class)->findBy(['project' => $project]);
 
@@ -111,7 +115,8 @@ class TaskController extends AbstractController
             [
                 'task' => $task,
                 'sprints'=> $sprints,
-                'project' =>$project
+                'project' =>$project,
+              'projects' => $projectRepository->findAll()
             ]
         );
     }

@@ -1,8 +1,33 @@
 {% extends 'base.html.twig' %}
+        {% block title %}Sprints{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
+        {% endblock %}
 
-{% block title %}Sprint index{% endblock %}
+        {% block body %}
 
-{% block body %}
+            <section id="wrapper">
+                <nav>
+                    <div class="projects">
+                        <h2><a href="{{ path('project_index') }}"><   Home</a></h2>
+                        <h1>Liste des projets</h1>
+                        <ul class="project-list">
+                            {% for proj in projects %}
+                                <li><a href="{{ path('backlog', {'project': proj.id}) }}">{{ proj.title }}</a></li>
+                                {% if proj.id == project.id %}
+                                    {% for sprint in proj.sprints %}
+                                        <li><a href="{{ path('sprint_show', {'id' : sprint.id}) }}" class="menu-decale">{{ sprint.title }}</a></li>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div>
+                        <a class="add" href="{{ path('project_new') }}">Ajouter une Tâche</a>
+                        <a class="add" href="{{ path('project_new') }}">Ajouter un Sprint</a>
+                    </div>
+                </nav>
+            </section>
     <h1>Sprint index</h1>
 
     <table class="table">
@@ -17,7 +42,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for sprint in sprints %}
+        {% for sprint in project.sprints %}
             <tr>
                 <td>{{ sprint.id }}</td>
                 <td>{{ sprint.title }}</td>

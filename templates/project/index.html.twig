@@ -1,46 +1,19 @@
 {% extends 'base.html.twig' %}
 {% block title %}Project index{% endblock %}
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="/projects_asset/stylesheets/project.css">
+   <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
 {% endblock %}
 {% block body %}
 <section id="wrapper">
    <nav>
       <div class="projects">
-         <!--<a class="home" href="{{ path('project_index') }}">< Accueil</a>-->
+         <h2><a href="{{ path('project_index') }}"><   Home</a></h2>
          <h1>Liste des projets</h1>
          <ul class="project-list">
             {% for project in projects %}
             <li><a href="{{ path('backlog', {'project': project.id}) }}">{{ project.title }}</a></li>
             {% endfor %}
          </ul>
-   <!--
-         <table class="table">
-            <thead>
-               <tr>
-                  <th>Titre</th>
-                  <th>Description</th>
-                  <th>Actions</th>
-               </tr>
-            </thead>
-            <tbody>
-               {% for project in projects %}
-               <tr>
-                  <td>{{ project.title }}</td>
-                  <td>{{ project.resume }}</td>
-                  <td>
-                     <a href="{{ path('backlog', {'project': project.id}) }}">Voir le backlog</a>
-                     <a href="{{ path('project_edit', {'id': project.id}) }}">Modifier</a>
-                  </td>
-               </tr>
-               {% else %}
-               <tr>
-                  <td colspan="4">Aucun projet</td>
-               </tr>
-               {% endfor %}
-            </tbody>
-         </table>
-      -->
       </div>
       <a class="add" href="{{ path('project_new') }}">Ajouter un projet</a>
    </nav>
