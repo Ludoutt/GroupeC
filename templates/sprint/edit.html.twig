@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
         {% block title %}Sprint{% endblock %}
         {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{asset('css/form.css')}}">
             <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
         {% endblock %}
 
@@ -28,11 +29,14 @@
                     </div>
                 </nav>
             </section>
-    <h1>Edit Sprint</h1>
+            <section class="under-menu"></section>
+            <section class="form-page">
+                <h1>Modifier le sprint</h1>
 
-    {{ include('sprint/_form.html.twig', {'button_label': 'Update'}) }}
+                {{ include('sprint/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('sprint_index', {'id' : sprint.project.id}) }}">back to list</a>
+                {{ include('sprint/_delete_form.html.twig') }}
 
-    {{ include('sprint/_delete_form.html.twig') }}
+                 <a href="{{ path('sprint_index', {'id' : sprint.project.id}) }}" class="back-form" style="margin-top:20px;">Retour à la liste</a>
+            </section>
 {% endblock %}

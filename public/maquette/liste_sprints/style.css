@@ -31,12 +31,12 @@ body {
     background: linear-gradient(90deg, rgba(0,51,231,1) 0%, rgba(40,85,242,1) 0%, rgba(126,44,190,1) 100%);
 }
 
-
 #corps {
-    margin-left: 25%;
+    width: 100%;
+    margin-left: 0;
 }
 #corps h1 {
-    margin-left: 2%;
+    margin-bottom: 5%;
 }
 .bouton_add_sprint {
     background-color: white;
@@ -52,6 +52,7 @@ body {
 .table_sprints {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 3%;
 }
 .table_sprints tbody {
     margin-top: 60px;
@@ -63,21 +64,27 @@ body {
     font-weight: 700;
 }
 .table_sprints tr td:first-child {
-    width: 60%;
+    width: 0;
     padding-left: 3%;
 }
-.td_voir a {
+
+#corps .table_sprints tr td{
+    text-align: center;
+}
+.td_voir a, .td_voir {
     background-color: black;
     color: white;
     border-radius: 100px;
     padding: 10px 20px;
     text-decoration: none;
     border: 1px solid black;
+    transition: 0.3s;
 }
-.td_voir a:hover {
+.td_voir a:hover, .td_voir:hover {
     background-color: white;
     color: black;
     border: 1px solid black;
+    transition: 0.3s;
 }
 .table_sprints tr td:nth-child(2), .table_sprints tr td:nth-child(3) {
     text-align: center;

@@ -1,4 +1,11 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_label(form.title) }}
+    {{ form_widget(form.title, {'attr':{'placeholder':'Title'}}) }}
+    {{ form_label(form.resume) }}
+    {{ form_widget(form.resume, {'attr':{'placeholder':'Resume'}}) }}
+    {{ form_label(form.dateStart) }}
+    {{ form_widget(form.dateStart, {'attr':{'placeholder':'Start date'}}) }}
+    {{ form_label(form.dateEnd) }}
+    {{ form_widget(form.dateEnd, {'attr':{'placeholder':'End date'}}) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

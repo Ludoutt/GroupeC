@@ -31,10 +31,10 @@
             </section>
             <section class="under-menu"></section>
             <section class="form-page">
-                <h1>Create new Sprint</h1>
+                <h1>Créer un nouveau Sprint</h1>
 
                 {{ include('sprint/_form.html.twig') }}
 
-                <a href="{{ path('sprint_index', {'id' : project.id}) }}">back to list</a>
+                <a href="{{ path('sprint_index', {'id' : project.id}) }}" class="back-form">Retour à la liste</a>
             </section>
 {% endblock %}
