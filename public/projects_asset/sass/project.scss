@@ -8,11 +8,12 @@ html, body {
 $nav-width: 350px;
 section#wrapper {
 	display: flex;
+	width: 100%;
 	nav {
 		position: fixed;
 		height: 100vh;
 		background-color: #231C41;
-		min-width: $nav-width;
+		width: 25%;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -26,6 +27,14 @@ section#wrapper {
 				color: #CCC;
 				text-indent: 20px;
 				display: block;
+			}
+			h2 {
+				margin-left: 20px;
+				a {
+					color: white;
+  					text-decoration: none;
+					font-weight: normal;
+				}
 			}
 			h1 {
 				margin: 0;
@@ -75,42 +84,42 @@ section#wrapper {
 			text-align: center;
 		}
 	}
-	div.masonry {
-		display: flex;
-		flex-wrap: wrap;
-		width: calc(100% - 350px);
-		margin-left: 350px;
-		article.project {
-			width: 200px;
-			margin: 20px;
-			img {
-				object-fit: cover;
-				object-position: center;
-				height: 200px;
-				width: 100%;
-				border-radius: 10px;
-			}
-			h2 {
-				color: #222;
-				font-size: 16px;
-			}
-			p {
-				color: #666;
-				font-size: 12px;
-				line-height: 1.5;
-				height: 60px;
-				overflow: hidden;
-				margin-bottom: 20px;
-			}
-			a {
-				color: rgba(0,51,231,1);
-				text-decoration: none;
-				border: 2px solid rgba(0,51,231,1);
-				border-radius: 5px;
-				padding: 5px 10px;
-				font-size: 14px;
-				font-weight: 600;
-			}
+}
+div.masonry {
+	display: flex;
+	flex-wrap: wrap;
+	width: 75%;
+	margin-left: 25%;
+	article.project {
+		width: 200px;
+		margin: 20px;
+		img {
+			object-fit: cover;
+			object-position: center;
+			height: 200px;
+			width: 100%;
+			border-radius: 10px;
+		}
+		h2 {
+			color: #222;
+			font-size: 16px;
+		}
+		p {
+			color: #666;
+			font-size: 12px;
+			line-height: 1.5;
+			height: 60px;
+			overflow: hidden;
+			margin-bottom: 20px;
+		}
+		a {
+			color: rgba(0,51,231,1);
+			text-decoration: none;
+			border: 2px solid rgba(0,51,231,1);
+			border-radius: 5px;
+			padding: 5px 10px;
+			font-size: 14px;
+			font-weight: 600;
 		}
 	}
 }

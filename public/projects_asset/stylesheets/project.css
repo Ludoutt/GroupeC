@@ -15,7 +15,7 @@ section#wrapper nav {
   position: fixed;
   height: 100vh;
   background-color: #231C41;
-  min-width: 350px;
+  width: 25%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,6 +33,14 @@ section#wrapper nav div.projects a.home {
   color: #CCC;
   text-indent: 20px;
   display: block;
+}
+section#wrapper nav div.projects h2 {
+  margin-left: 20px;
+}
+section#wrapper nav div.projects h2 a {
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
 }
 /* line 30, ../sass/project.scss */
 section#wrapper nav div.projects h1 {
@@ -74,32 +82,37 @@ section#wrapper nav div.projects ul.project-list li a {
   line-height: 1.7;
   text-decoration: none;
 }
+
+/* line 56, ../sass/project.scss */
+section#wrapper nav div.projects ul.project-list li a.menu-decale {
+  margin-left : 25px;
+}
 /* line 66, ../sass/project.scss */
 section#wrapper nav a.add {
   border: 1px solid white;
   padding: 15px 20px;
   border-radius: 5px;
   color: white;
-  display: table-cell;
+  display: block;
   text-decoration: none;
   margin: 0 auto 35px auto;
   width: 150px;
   text-align: center;
 }
 /* line 78, ../sass/project.scss */
-section#wrapper div.masonry {
+div.masonry {
   display: flex;
   flex-wrap: wrap;
-  width: calc(100% - 350px);
-  margin-left: 350px;
+  width: 75%;
+  margin-left: 25%;
 }
 /* line 83, ../sass/project.scss */
-section#wrapper div.masonry article.project {
+div.masonry article.project {
   width: 200px;
   margin: 20px;
 }
 /* line 86, ../sass/project.scss */
-section#wrapper div.masonry article.project img {
+div.masonry article.project img {
   object-fit: cover;
   object-position: center;
   height: 200px;
@@ -107,12 +120,12 @@ section#wrapper div.masonry article.project img {
   border-radius: 10px;
 }
 /* line 93, ../sass/project.scss */
-section#wrapper div.masonry article.project h2 {
+div.masonry article.project h2 {
   color: #222;
   font-size: 16px;
 }
 /* line 97, ../sass/project.scss */
-section#wrapper div.masonry article.project p {
+div.masonry article.project p {
   color: #666;
   font-size: 12px;
   line-height: 1.5;
@@ -121,7 +134,7 @@ section#wrapper div.masonry article.project p {
   margin-bottom: 20px;
 }
 /* line 105, ../sass/project.scss */
-section#wrapper div.masonry article.project a {
+div.masonry article.project a {
   color: #0033e7;
   text-decoration: none;
   border: 2px solid #0033e7;
@@ -130,3 +143,4 @@ section#wrapper div.masonry article.project a {
   font-size: 14px;
   font-weight: 600;
 }
+

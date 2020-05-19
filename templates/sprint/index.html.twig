@@ -1,38 +1,64 @@
 {% extends 'base.html.twig' %}
+        {% block title %}Sprints{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
+        {% endblock %}
 
-{% block title %}Sprint index{% endblock %}
+        {% block body %}
+            <section id="wrapper">
+                <nav>
+                    <div class="projects">
+                        <h2><a href="{{ path('project_index') }}"><   Home</a></h2>
+                        <h1>Liste des projets</h1>
+                        <ul class="project-list">
+                            {% for proj in projects %}
+                                <li><a href="{{ path('backlog', {'project': proj.id}) }}">{{ proj.title }}</a></li>
+                                {% if proj.id == project.id %}
+                                    {% for sprint in proj.sprints %}
+                                        <li><a href="{{ path('sprint_show', {'id' : sprint.id}) }}" class="menu-decale">{{ sprint.title }}</a></li>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div>
+                        <a class="add" href="{{ path('project_new') }}">Ajouter une Tâche</a>
+                        <a class="add" href="{{ path('project_new') }}">Ajouter un Sprint</a>
+                    </div>
+                </nav>
+            </section>
+    <h1>Sprint index</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Resume</th>
+                <th>DateStart</th>
+                <th>DateEnd</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sprint in project.sprints %}
+            <tr>
+                <td>{{ sprint.id }}</td>
+                <td>{{ sprint.title }}</td>
+                <td>{{ sprint.resume }}</td>
+                <td>{{ sprint.dateStart ? sprint.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ sprint.dateEnd ? sprint.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('sprint_show', {'id': sprint.id}) }}">show</a>
+                    <a href="{{ path('sprint_edit', {'id': sprint.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-{% block body %}
-
-    <div style="margin-left: 25%; width: 100%">
-        <h1 style="margin-left: 2%;">Liste des sprints</h1>
-        <a class="bouton_add_sprint" href="{{ path('sprint_new', {'id' : project.id}) }}">Ajouter un sprint</a>
-        <table class="table_sprints">
-            <thead>
-                <tr>
-                    <td>Nom</td>
-                    <th>Date</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for sprint in sprints %}
-                <tr>
-                    {# <td>{{ sprint.id }}</td> #}
-                    <td>{{ sprint.title }}</td>
-                    {# <td>{{ sprint.resume }}</td> #}
-                    <td>{{ sprint.dateStart ? sprint.dateStart|date('d-m-Y') : '' }} - {{ sprint.dateEnd ? sprint.dateEnd|date('d-m-Y') : '' }}</td>
-                    <td class="td_voir">
-                        <a href="{{ path('sprint_show', {'id': sprint.id}) }}">Voir</a>
-                        {# <a href="{{ path('sprint_edit', {'id': sprint.id}) }}">edit</a> #}
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="6">no records found</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    <a href="{{ path('sprint_new', {'id' : project.id}) }}">Create new</a>
 {% endblock %}
