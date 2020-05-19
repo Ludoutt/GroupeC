@@ -17,19 +17,19 @@
       </div>
       <a class="add" href="{{ path('project_new') }}">Ajouter un projet</a>
    </nav>
-   <div class="masonry">
-      {% for project in projects %}
-      <article class="project">
-         <img src="https://www.go-sens.fr/img/no-image.jpg">
-         <h2>{{ project.title }}</h2>
-         <p>{{ project.resume }}</p>
-         <div>
-            <a href="{{ path('project_edit', {'id': project.id}) }}">Editer</a>
-            <a href="{{ path('backlog', {'project': project.id}) }}">Voir</a>
-         </div>
-      </article>
-      {% endfor %}
-      </div>
-   </div>
 </section>
+<div class="masonry">
+   {% for project in projects %}
+   <article class="project">
+      <img src="https://www.go-sens.fr/img/no-image.jpg">
+      <h2>{{ project.title }}</h2>
+      <p>{{ project.resume }}</p>
+      <div>
+         <a href="{{ path('project_edit', {'id': project.id}) }}">Editer</a>
+         <a href="{{ path('backlog', {'project': project.id}) }}">Voir</a>
+      </div>
+   </article>
+   {% endfor %}
+   </div>
+</div>
 {% endblock %}

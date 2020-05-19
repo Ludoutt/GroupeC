@@ -76,42 +76,42 @@ section#wrapper {
 			text-align: center;
 		}
 	}
-	div.masonry {
-		display: flex;
-		flex-wrap: wrap;
-		width: 75%;
-		margin-left: 25%;
-		article.project {
-			width: 200px;
-			margin: 20px;
-			img {
-				object-fit: cover;
-				object-position: center;
-				height: 200px;
-				width: 100%;
-				border-radius: 10px;
-			}
-			h2 {
-				color: #222;
-				font-size: 16px;
-			}
-			p {
-				color: #666;
-				font-size: 12px;
-				line-height: 1.5;
-				height: 60px;
-				overflow: hidden;
-				margin-bottom: 20px;
-			}
-			a {
-				color: rgba(0,51,231,1);
-				text-decoration: none;
-				border: 2px solid rgba(0,51,231,1);
-				border-radius: 5px;
-				padding: 5px 10px;
-				font-size: 14px;
-				font-weight: 600;
-			}
+}
+div.masonry {
+	display: flex;
+	flex-wrap: wrap;
+	width: 75%;
+	margin-left: 25%;
+	article.project {
+		width: 200px;
+		margin: 20px;
+		img {
+			object-fit: cover;
+			object-position: center;
+			height: 200px;
+			width: 100%;
+			border-radius: 10px;
+		}
+		h2 {
+			color: #222;
+			font-size: 16px;
+		}
+		p {
+			color: #666;
+			font-size: 12px;
+			line-height: 1.5;
+			height: 60px;
+			overflow: hidden;
+			margin-bottom: 20px;
+		}
+		a {
+			color: rgba(0,51,231,1);
+			text-decoration: none;
+			border: 2px solid rgba(0,51,231,1);
+			border-radius: 5px;
+			padding: 5px 10px;
+			font-size: 14px;
+			font-weight: 600;
 		}
 	}
 }

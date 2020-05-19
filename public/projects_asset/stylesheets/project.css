@@ -9,7 +9,6 @@ html, body {
 /* line 9, ../sass/project.scss */
 section#wrapper {
   display: flex;
-  width: 100%;
 }
 /* line 11, ../sass/project.scss */
 section#wrapper nav {
@@ -93,19 +92,19 @@ section#wrapper nav a.add {
   text-align: center;
 }
 /* line 78, ../sass/project.scss */
-section#wrapper div.masonry {
+div.masonry {
   display: flex;
   flex-wrap: wrap;
   width: 75%;
   margin-left: 25%;
 }
 /* line 83, ../sass/project.scss */
-section#wrapper div.masonry article.project {
+div.masonry article.project {
   width: 200px;
   margin: 20px;
 }
 /* line 86, ../sass/project.scss */
-section#wrapper div.masonry article.project img {
+div.masonry article.project img {
   object-fit: cover;
   object-position: center;
   height: 200px;
@@ -113,12 +112,12 @@ section#wrapper div.masonry article.project img {
   border-radius: 10px;
 }
 /* line 93, ../sass/project.scss */
-section#wrapper div.masonry article.project h2 {
+div.masonry article.project h2 {
   color: #222;
   font-size: 16px;
 }
 /* line 97, ../sass/project.scss */
-section#wrapper div.masonry article.project p {
+div.masonry article.project p {
   color: #666;
   font-size: 12px;
   line-height: 1.5;
@@ -127,7 +126,7 @@ section#wrapper div.masonry article.project p {
   margin-bottom: 20px;
 }
 /* line 105, ../sass/project.scss */
-section#wrapper div.masonry article.project a {
+div.masonry article.project a {
   color: #0033e7;
   text-decoration: none;
   border: 2px solid #0033e7;
