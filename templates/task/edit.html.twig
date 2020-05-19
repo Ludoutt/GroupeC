@@ -1,39 +1,43 @@
 {% extends 'base.html.twig' %}
         {% block title %}Backlog{% endblock %}
         {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{asset('css/form.css')}}">
             <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
         {% endblock %}
 
         {% block body %}
 
-            <section id="wrapper">
-                <nav>
-                    <div class="projects">
-                        <h2><a href="{{ path('project_index') }}"><   Home</a></h2>
-                        <h1>Liste des projets</h1>
-                        <ul class="project-list">
-                            {% for proj in projects %}
-                                <li><a href="{{ path('backlog', {'project': proj.id}) }}">{{ proj.title }}</a></li>
-                                {% if proj.id == project.id %}
-                                    {% for sprint in proj.sprints %}
-                                        <li><a href="{{ path('sprint_show', {'id' : sprint.id}) }}" class="menu-decale">{{ sprint.title }}</a></li>
-                                    {% endfor %}
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div>
-                        <a class="add" href="{{ path('project_new') }}">Ajouter une Tâche</a>
-                        <a class="add" href="{{ path('project_new') }}">Ajouter un Sprint</a>
-                    </div>
-                </nav>
-            </section>
+<section id="wrapper">
+    <nav>
+        <div class="projects">
+            <h2><a href="{{ path('project_index') }}"><   Home</a></h2>
+            <h1>Liste des projets</h1>
+            <ul class="project-list">
+                {% for proj in projects %}
+                    <li><a href="{{ path('backlog', {'project': proj.id}) }}">{{ proj.title }}</a></li>
+                    {% if proj.id == project.id %}
+                        {% for sprint in proj.sprints %}
+                            <li><a href="{{ path('sprint_show', {'id' : sprint.id}) }}" class="menu-decale">{{ sprint.title }}</a></li>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <a class="add" href="{{ path('project_new') }}">Ajouter une Tâche</a>
+            <a class="add" href="{{ path('project_new') }}">Ajouter un Sprint</a>
+        </div>
+    </nav>
+</section>
+<section class="under-menu"></section>
+<section class="form-page">
     <h1>Edit Task</h1>
 
     {{ include('task/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('backlog', {'project': project.id}) }}">back to list</a>
+    <a class="back-form" style="margin-bottom: 20px;" href="{{ path('backlog', {'project': project.id}) }}">back to list</a>
 
     {{ include('task/_delete_form.html.twig') }}
-        {% endblock %}
-        {% block javascripts %}{% endblock %}
+</section>
+{% endblock %}
+{% block javascripts %}{% endblock %}

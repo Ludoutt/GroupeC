@@ -1,4 +1,11 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_label(form.title) }}
+    {{ form_widget(form.title, {'attr':{'placeholder':'Title'}}) }}
+    {{ form_label(form.resume) }}
+    {{ form_widget(form.resume, {'attr':{'placeholder':'Resume'}}) }}
+    {{ form_label(form.priority) }}
+    {{ form_widget(form.priority, {'attr':{'placeholder':'Priority'}}) }}
+    {{ form_label(form.status) }}
+    {{ form_widget(form.status, {'attr':{'placeholder':'Status'}}) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

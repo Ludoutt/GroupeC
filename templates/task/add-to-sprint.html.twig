@@ -36,23 +36,21 @@
                 {% if sprints is not empty %}
                     <form method="post" action="">
                         <label for="sprint">Sprint</label>
-                        <select name="sprint" id="sprint">
+                        <select class="select-form" name="sprint" id="sprint">
                             <option value="">Selectionner un sprint...</option>
                             {% for sprint in sprints %}
                                 <option {{ task.sprint is not empty and task.sprint.id == sprint.id ? 'selected' : '' }}
                                         value="{{ sprint.id }}">{{ sprint.title }}</option>
                             {% endfor %}
                         </select>
-                        <button type="submit">Choisir</button>
+                        <button class="btn" type="submit">Choisir</button>
                     </form>
                 {% else %}
-                    <div>
+                    <div style="margin-top: 20px;">
                         Il n'existe actuellement aucun sprint, <a href="{{ path('sprint_new', {'id' : project.id}) }}">commencez
                             par en créer un !</a>
                     </div>
                 {% endif %}
-                <div>
-                    <a href="{{ path('backlog', {'project': project.id}) }}">Retour au backlog produit</a>
-                </div>
+                <a class="back-form" href="{{ path('backlog', {'project': project.id}) }}">Retour au backlog produit</a>
             </section>
         {% endblock %}

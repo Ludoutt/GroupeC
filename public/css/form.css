@@ -59,6 +59,15 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
 }
+.form-page .select-form {
+    border: none;
+    border-bottom: 2px solid black;
+    width: 80%;
+    margin-bottom: 20px;
+    height: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
 .form-page .textarea-form::placeholder {
     font-size: 15px;
     color: black;

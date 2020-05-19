@@ -1,32 +1,29 @@
 {% extends 'base.html.twig' %}
-        {% block title %}New Ticket Backlog{% endblock %}
-        {% block stylesheets %}
-            <link rel="stylesheet" type="text/css" href="{{asset('css/form.css')}}">
-            <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
-        {% endblock %}
+{% block title %}New Ticket Backlog{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/form.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
+{% endblock %}
 
-        {% block body %}
-
-            <section id="wrapper">
-                <nav>
-                    <div class="projects">
-                        <h2><a href="{{ path('project_index') }}">< Home</a></h2>
-                        <h1>Liste des projets</h1>
-                        <ul class="project-list">
-                            {% for project in projects %}
-                                <li><a href="{{ path('backlog', {'project': project.id}) }}">{{ project.title }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </nav>
-            </section>
-            <section class="under-menu"></section>
-            <section class="form-page">
-                <h1>Ajouter un ticket au backlog</h1>
-                {{ include('task/_form.html.twig', {'button_label': 'Update'}) }}
-                <div>
-                    <a href="{{ path('backlog', {'project': project.id}) }}">Retour au backlog produit</a>
-                </div>
-            </section>
-        {% endblock %}
+{% block body %}
+    <section id="wrapper">
+        <nav>
+            <div class="projects">
+                <h2><a href="{{ path('project_index') }}">< Home</a></h2>
+                <h1>Liste des projets</h1>
+                <ul class="project-list">
+                    {% for project in projects %}
+                        <li><a href="{{ path('backlog', {'project': project.id}) }}">{{ project.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <section class="under-menu"></section>
+    <section class="form-page">
+        <h1>Ajouter un ticket au backlog</h1>
+        {{ include('task/_form.html.twig', {'button_label': 'Update'}) }}
+        <a class="back-form" href="{{ path('backlog', {'project': project.id}) }}">Retour au backlog produit</a>
+    </section>
+{% endblock %}
