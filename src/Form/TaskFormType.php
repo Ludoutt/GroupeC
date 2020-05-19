@@ -19,34 +19,39 @@ class TaskFormType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-              'label' => 'Titre'
+                'attr' => [
+                    'class' => 'input-form',
+                    'placeholder' => 'Titre'
+                ]
             ])
             ->add('resume', TextareaType::class, [
-              'label' => 'Résumé'
+                'attr' => [
+                    'class' => 'textarea-form',
+                    'placeholder' => 'Résumé'
+                ]
             ])
             ->add('priority', ChoiceType::class, [
-              'choices'  => [
-                'Low' => 'low',
-                'Normal' => 'normal',
-                'Hight' => 'hight',
-              ],
-              'label' => 'Priorité'
+                'choices' => [
+                    'Low' => 'low',
+                    'Normal' => 'normal',
+                    'Hight' => 'hight',
+                ],
+                'label' => 'Priorité'
             ])
             ->add('status', ChoiceType::class, [
-              'choices'  => [
-                'Todo' => 'todo',
-                'Doing' => 'doing',
-                'Done' => 'done',
-              ],
-              'label' => 'Status'
+                'choices' => [
+                    'Todo' => 'todo',
+                    'Doing' => 'doing',
+                    'Done' => 'done',
+                ],
+                'label' => 'Status'
             ])
             ->add('tags', EntityType::class, [
-              'class' => TaskTag::class,
-              'choice_label' => 'label',
-              'label' => 'Tag',
-              'required' => false
-            ])
-        ;
+                'class' => TaskTag::class,
+                'choice_label' => 'label',
+                'label' => 'Tag',
+                'required' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
