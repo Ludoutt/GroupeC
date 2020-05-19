@@ -1,32 +1,57 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Backlog{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
+{% extends 'base.html.twig' %}
+        {% block title %}Backlog{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{asset('css/form.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('/projects_asset/stylesheets/project.css') }}">
+        {% endblock %}
+
         {% block body %}
-            <h1>Backlog du projet {{ project.title }}</h1>
-            <a href="{{ path('project_index') }}">Retour à la liste des projets</a>
-            <a href="{{ path('backlog_new', {'project' : project.id}) }}">Ajouter une tâche</a>
-            {% if tasks is not empty %}
-                <div>
-                    <h3>Liste des éléments du backlog</h3>
-                    {% for task in tasks %}
-                        <div>
-                            {{ task.title }}
-                        </div>
-                        <a href="{{ path('add-to-sprint', {'project' : project.id, 'task' : task.id}) }}">Assigner la tache à un sprint</a>
-                        <a href="{{ path('backlog_edit', {'project' : project.id, 'task' : task.id}) }}">Modifier la tache</a>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <div>
-                    Aucun élément dans le backlog pour le moment
-                </div>
-            {% endif %}
+
+            <section id="wrapper">
+                <nav>
+                    <div class="projects">
+                        <h2><a href="{{ path('project_index') }}"><   Home</a></h2>
+                        <h1>Liste des projets</h1>
+                        <ul class="project-list">
+                            {% for proj in projects %}
+                                <li><a href="{{ path('backlog', {'project': proj.id}) }}">{{ proj.title }}</a></li>
+                                {% if proj.id == project.id %}
+                                    {% for sprint in proj.sprints %}
+                                    <li><a href="{{ path('sprint_show', {'id' : sprint.id}) }}" class="menu-decale">{{ sprint.title }}</a></li>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div>
+                        <a class="add" href="{{ path( 'backlog_new', {'project' : project.id} ) }}">Ajouter une Tâche</a>
+                        <a class="add" href="{{ path( 'sprint_new', {'id' : project.id} ) }}">Ajouter un Sprint</a>
+                    </div>
+                </nav>
+            </section>
+            <section class="under-menu"></section>
+            <section class="form-page">
+                <h1>Backlog du projet {{ project.title }}</h1>
+                <a href="{{ path('sprint_index', {"id" : project.id})  }}" class="back-form">sprints</a>
+                <a href="{{ path('project_index') }}" class="back-form">Retour à la liste des projets</a>
+                <a href="{{ path('backlog_new', {'project' : project.id}) }}" class="back-form">Ajouter une tâche</a>
+                {% if tasks is not empty %}
+                    <div>
+                        <h3 style="text-align: center;">Liste des éléments du backlog</h3>
+                        {% for task in tasks %}
+                            <div class="task-name-contain">
+                                {{ task.title }}
+                            </div>
+                            <a href="{{ path('add-to-sprint', {'project' : project.id, 'task' : task.id}) }}" class="back-form">Assigner la tache à un sprint</a>
+                            <a href="{{ path('backlog_edit', {'project' : project.id, 'task' : task.id}) }}" class="back-form">Modifier la tache</a>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div style="margin-top: 20px;">
+                        Aucun élément dans le backlog pour le moment
+                    </div>
+                {% endif %}
+            </section>
         {% endblock %}
         {% block javascripts %}{% endblock %}
-    </body>
-</html>
+

@@ -25,7 +25,7 @@ class ProjectController extends AbstractController
     /**
      * @Route("/project/new", name="project_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, ProjectRepository $projectRepository): Response
     {
         $project = new Project();
         $form = $this->createForm(ProjectType::class, $project);
@@ -41,6 +41,7 @@ class ProjectController extends AbstractController
 
         return $this->render('project/new.html.twig', [
             'project' => $project,
+            'projects' => $projectRepository->findAll(),
             'form' => $form->createView(),
         ]);
     }
@@ -48,7 +49,7 @@ class ProjectController extends AbstractController
     /**
      * @Route("/project/{id}/edit", name="project_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Project $project): Response
+    public function edit(Request $request, Project $project, ProjectRepository $projectRepository): Response
     {
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
@@ -61,6 +62,7 @@ class ProjectController extends AbstractController
 
         return $this->render('project/edit.html.twig', [
             'project' => $project,
+            'projects' => $projectRepository->findAll(),
             'form' => $form->createView(),
         ]);
     }
