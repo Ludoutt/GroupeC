@@ -30,39 +30,42 @@
             </section>
             <section class="under-menu"></section>
             <section class="form-page">
-                <h1>Sprint index</h1>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Resume</th>
-                        <th>DateStart</th>
-                        <th>DateEnd</th>
-                        <th>actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for sprint in project.sprints %}
+                <div id="corps">
+                    <h1>Liste des sprints</h1>
+                    <a class="back-sprints" href="{{ path('sprint_new', {'id' : project.id}) }}">Créer un nouveau Sprint</a>
+                    <table class="table_sprints">
+                        <thead>
                         <tr>
-                            <td>{{ sprint.id }}</td>
-                            <td>{{ sprint.title }}</td>
-                            <td>{{ sprint.resume }}</td>
-                            <td>{{ sprint.dateStart ? sprint.dateStart|date('Y-m-d H:i:s') : '' }}</td>
-                            <td>{{ sprint.dateEnd ? sprint.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
-                            <td>
-                                <a href="{{ path('sprint_show', {'id': sprint.id}) }}">show</a>
-                                <a href="{{ path('sprint_edit', {'id': sprint.id}) }}">edit</a>
-                            </td>
+                            <th>Id</th>
+                            <th>Titre</th>
+                            <th>Résumé</th>
+                            <th>Date de commencement</th>
+                            <th>Date de fin</th>
+                            <th>Commandes</th>
                         </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="6">no records found</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {% for sprint in project.sprints %}
+                            <tr>
+                                <td>{{ sprint.id }}</td>
+                                <td>{{ sprint.title }}</td>
+                                <td>{{ sprint.resume }}</td>
+                                <td>{{ sprint.dateStart ? sprint.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ sprint.dateEnd ? sprint.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    <a class="td_voir" href="{{ path('sprint_show', {'id': sprint.id}) }}">Voir</a>
+                                    <a class="td_voir" href="{{ path('sprint_edit', {'id': sprint.id}) }}">Modifier</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
 
-                <a href="{{ path('sprint_new', {'id' : project.id}) }}">Create new</a>
+                </div> 
+                
             </section>
 {% endblock %}
