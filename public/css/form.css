@@ -50,6 +50,20 @@ body {
     color: black;
     font-family: 'Montserrat', sans-serif;
 }
+.form-page .textarea-form {
+    border: none;
+    border-bottom: 2px solid black;
+    width: 80%;
+    height: 100px;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
+.form-page .textarea-form::placeholder {
+    font-size: 15px;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+}
 .form-page button.btn {
     width: 140px;
     padding-top: 9px;
